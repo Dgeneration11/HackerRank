@@ -14,5 +14,5 @@ int main()
 {
     int n;
     cin>>n;
-    cout<<fact(n);
+    cout<<fact(n)<<endl;
 }
