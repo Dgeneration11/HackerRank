@@ -2,11 +2,11 @@
 using namespace std;
 
 int main(){
-    int a[6][6];
+    int arr[6][6];
 
     for(int i=0;i<6;i++){
         for(int j=0;j<6;j++){
-            cin>>a[i][j];
+            cin>>arr[i][j];
         }
     }
 
