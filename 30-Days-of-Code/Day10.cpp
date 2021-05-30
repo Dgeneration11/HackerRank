@@ -10,7 +10,7 @@ int main(){
     while(n>0){
         if(n%2==1){
             sum++;
-            if(sum>max{
+            if(sum>max){
                 max=sum;
             }
         }
