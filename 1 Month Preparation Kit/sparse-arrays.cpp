@@ -14,8 +14,22 @@ string rtrim(const string &);
  *  2. STRING_ARRAY queries
  */
 
-vector<int> matchingStrings(vector<string> strings, vector<string> queries) {
+vector<int> matchingStrings(vector<string> strings, vector<string> queries)
+{
     vector<int> result;
+    for (auto query : queries)
+    {
+        int count = 0;
+        for (auto string : strings)
+        {
+            if (string.find(query) != string.npos)
+            {
+                count++;
+            }
+        }
+        result.push_back(count);
+    }
+    return result;
 }
 
 int main()
@@ -29,7 +43,8 @@ int main()
 
     vector<string> strings(strings_count);
 
-    for (int i = 0; i < strings_count; i++) {
+    for (int i = 0; i < strings_count; i++)
+    {
         string strings_item;
         getline(cin, strings_item);
 
@@ -43,7 +58,8 @@ int main()
 
     vector<string> queries(queries_count);
 
-    for (int i = 0; i < queries_count; i++) {
+    for (int i = 0; i < queries_count; i++)
+    {
         string queries_item;
         getline(cin, queries_item);
 
@@ -52,10 +68,12 @@ int main()
 
     vector<int> res = matchingStrings(strings, queries);
 
-    for (size_t i = 0; i < res.size(); i++) {
+    for (size_t i = 0; i < res.size(); i++)
+    {
         fout << res[i];
 
-        if (i != res.size() - 1) {
+        if (i != res.size() - 1)
+        {
             fout << "\n";
         }
     }
@@ -67,24 +85,24 @@ int main()
     return 0;
 }
 
-string ltrim(const string &str) {
+string ltrim(const string &str)
+{
     string s(str);
 
     s.erase(
         s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
-    );
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace))));
 
     return s;
 }
 
-string rtrim(const string &str) {
+string rtrim(const string &str)
+{
     string s(str);
 
     s.erase(
         find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
-    );
+        s.end());
 
     return s;
 }
