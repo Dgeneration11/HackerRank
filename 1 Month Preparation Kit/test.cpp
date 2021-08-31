@@ -1,22 +1,29 @@
 #include <bits/stdc++.h>
-#define ll long long
 using namespace std;
-
+vector<string> gss(string str)
+{
+    if (str.length() == 0)
+    {
+        return {""};
+    }
+    char ch = str[0];              //a
+    string res = str.substr(1);    //bc
+    vector<string> fss = gss(res); // _,_c,b,bc
+    vector<string> mss;
+    for (auto x : fss)
+    {
+        mss.push_back("" + x);
+    }
+    for (auto x : fss)
+    {
+        mss.push_back(ch + x);
+    }
+    return mss;
+}
 int main()
 {
-    int count = 0;
-    string s;
-    getline(cin, s);
-
-    transform(s.begin(), s.end(), s.begin(), ::toupper);
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.size(); i++)
-    {
-        if (s[i] != s[i + 1])
-        {
-            count++;
-        }
-    }
-    cout << s << endl;
-    cout << count << endl;
+    string str;
+    cin >> str;
+    vector<string> v = gss(str);
+    return 0;
 }
